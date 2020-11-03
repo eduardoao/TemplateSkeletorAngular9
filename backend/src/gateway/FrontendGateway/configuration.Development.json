@@ -1,0 +1,118 @@
+{
+  "Routes": [
+
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44326
+        }
+      ],
+      "UpstreamPathTemplate": "/security/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "SwaggerKey": "SecurityMicroservice"
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44388
+        }
+      ],
+      "UpstreamPathTemplate": "/financial/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "SwaggerKey": "FinancialMicroservice"
+    },    
+
+    {
+      "DownstreamPathTemplate": "/api/identity/login",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44397
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/login",
+      "UpstreamHttpMethod": [ "POST" ],
+      "SwaggerKey": "IdentityMicroservice"
+    },
+    {
+      "DownstreamPathTemplate": "/api/identity/register",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44397
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/register",
+      "UpstreamHttpMethod": [ "POST" ],
+      "SwaggerKey": "IdentityMicroservice"
+    },
+    {
+      "DownstreamPathTemplate": "/api/identity/validate",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44397
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/validate",
+      "UpstreamHttpMethod": [ "GET" ],
+      "SwaggerKey": "IdentityMicroservice"
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "SecurityMicroservice",
+      "Config": [
+        {
+          "Name": "Api SecurityMicroservice",
+          "Version": "v1",
+          "Url": "http://localhost:44326/swagger/v1/swagger.json"
+               
+        }
+      ]
+    },
+    {
+      "Key": "IdentityMicroservice",
+      "Config": [
+        {
+          "Name": "Api IdentityMicroservice",
+          "Version": "v1",
+          "Url": "http://localhost:44397/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "FinancialMicroservice",
+      "Config": [
+        {
+          "Name": "Api FinancialMicroservice",
+          "Version": "v1",
+          "Url": "http://localhost:44388/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
+
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:44300"
+  }
+}
